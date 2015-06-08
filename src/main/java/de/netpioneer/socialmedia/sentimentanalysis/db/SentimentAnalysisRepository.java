@@ -1,6 +1,7 @@
 package de.netpioneer.socialmedia.sentimentanalysis.db;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -25,6 +26,7 @@ public class SentimentAnalysisRepository {
 	
 	@PostConstruct
 	public void init() throws IOException {
+		// TODO can we directly load the word list as class members?
 		Resource positiveWordsResource = resourceLoader.getResource("classpath:positive-words.txt");
 		positiveWords = getWordsFromResource(positiveWordsResource);
 		Resource negativeWordsResource = resourceLoader.getResource("classpath:negative-words.txt");
@@ -34,11 +36,25 @@ public class SentimentAnalysisRepository {
 	public List<String> getPositiveWords() {
 		return positiveWords;
 	}
+	
+	public List<String> getMatchingPositiveWords(List<String> wordsToCheck) {
+		return getMatchingWords(wordsToCheck, this.positiveWords);
+	}
 
-	public List<String> getNegativeWords() {
+	public List<String> getNegativeWords(List<String> wordsToCheck) {
 		return negativeWords;
 	}
 
+	public List<String> getMatchingNegativeWords(List<String> wordsToCheck) {
+		return getMatchingWords(wordsToCheck, this.negativeWords);
+	}
+	
+	private List<String> getMatchingWords(List<String> wordsToCheck, List<String> words) {
+		List<String> matchingWords = new ArrayList<>(wordsToCheck);
+		matchingWords.retainAll(words);
+		return matchingWords;
+	}
+	
 	private List<String> getWordsFromResource(Resource resource) throws IOException {
 		return Files.readLines(resource.getFile(), Charsets.UTF_8, new WordLineProcessor());
 	}
