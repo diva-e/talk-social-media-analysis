@@ -4,13 +4,27 @@ angular.module('socialMediaAnalysisApp').controller(
 		'SentimentAnalysisController', function($scope, $http) {
 
 			$scope.searchKeyword = '';
-
+			
+			$scope.sentimentAnalysisResultsValues = [];
+			
+			$scope.sentimentAnalysisResultsLabels = [];
+			
 			$scope.performSentimentAnalysis = function() {
-				console.log('perform analysis with keyword '
-						+ $scope.searchKeyword);
-				$http.get('/social-media-analysis/v1.0/sentiments', { params: { 'keyword': $scope.searchKeyword } })
+				$http.get('/social-media-analysis/v1.0/sentiments', 
+						{ params: { 'keyword': $scope.searchKeyword } })
 				.then(function(result) {
-					$scope.sentimentAnalysisResults = result.data;
+					$scope.prepareChartModels(result.data);
 				})};
+				
+			$scope.prepareChartModels = function(sentimentAnalysisResults) {
+				
+				$scope.sentimentAnalysisResultsValues = [];
+				$scope.sentimentAnalysisResultsLabels = [];
+				
+				angular.forEach(sentimentAnalysisResults, function(value, key) {
+					  $scope.sentimentAnalysisResultsLabels.push(key);
+					  $scope.sentimentAnalysisResultsValues.push(value);
+					});
+			};
 
 		});
