@@ -8,7 +8,7 @@ public class SentimentAnalysisResult {
 	
 	private List<String> negativeWords;
 	
-	private Double score;
+	private double score;
 
 	public SentimentAnalysisResult(List<String> positiveWords,
 			List<String> negativeWords, Double score) {
@@ -26,8 +26,18 @@ public class SentimentAnalysisResult {
 		return negativeWords;
 	}
 
-	public Double getScore() {
+	public double getScore() {
 		return score;
+	}
+	
+	public Sentiment getSentiment() {
+		if (score < 0.5) {
+			return Sentiment.NEGATIVE;
+		}
+		if (score == 0.5) {
+			return Sentiment.NEUTRAL;
+		}
+		return Sentiment.POSITIVE;
 	}
 
 	@Override
