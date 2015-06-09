@@ -1,1 +1,21 @@
-<p>This is the sentiment analysis view.</p>
+<div class="row">
+	<h2>Sentiment Analysis</h2>
+</div>
+
+<div class="row">
+	<div class="col-lg-4">
+		<div class="input-group">
+			<input type="text" class="form-control"
+				placeholder="Search Twitter for..." ng-model="searchKeyword"> 
+				<span class="input-group-btn">
+				<button class="btn btn-default" type="button" ng-click="performSentimentAnalysis()">Go!</button>
+			</span>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-4">
+		<p>Search keyword: {{searchKeyword}}. The results will appear here.</p>
+	</div>
+</div>
