@@ -6,7 +6,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'chart.js'
+    'chart.js',
+    'angular-jqcloud'
   ])
   .config(function ($routeProvider) {
     $routeProvider
