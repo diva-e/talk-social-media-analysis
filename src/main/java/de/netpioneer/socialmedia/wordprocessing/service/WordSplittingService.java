@@ -1,9 +1,12 @@
-package de.netpioneer.socialmedia.core.service;
+package de.netpioneer.socialmedia.wordprocessing.service;
 
 import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class WordSplittingService {
 
 	public List<String> getWordsFromText(String text) {

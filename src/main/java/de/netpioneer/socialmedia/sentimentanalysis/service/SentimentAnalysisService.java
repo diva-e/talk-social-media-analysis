@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import de.netpioneer.socialmedia.core.service.WordSplittingService;
 import de.netpioneer.socialmedia.sentimentanalysis.db.SentimentAnalysisRepository;
 import de.netpioneer.socialmedia.sentimentanalysis.model.SentimentAnalysisResult;
+import de.netpioneer.socialmedia.wordprocessing.service.WordSplittingService;
 
 @Service
 public class SentimentAnalysisService {
