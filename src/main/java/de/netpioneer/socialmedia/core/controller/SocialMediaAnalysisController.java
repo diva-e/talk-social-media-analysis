@@ -1,4 +1,4 @@
-package de.netpioneer.socialmedia.controller;
+package de.netpioneer.socialmedia.core.controller;
 
 import java.util.HashMap;
 import java.util.Map;
