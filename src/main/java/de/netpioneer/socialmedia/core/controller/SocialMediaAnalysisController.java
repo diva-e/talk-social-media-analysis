@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import de.netpioneer.socialmedia.sentimentanalysis.model.Sentiment;
 import de.netpioneer.socialmedia.sentimentanalysis.service.SentimentAnalysisService;
+import de.netpioneer.socialmedia.wordprocessing.service.WordFrequencyService;
 
 @RequestMapping(value = "/social-media-analysis/v1.0/", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
@@ -20,8 +21,12 @@ public class SocialMediaAnalysisController {
 	@Autowired
 	private SentimentAnalysisService sentimentAnalysisService;
 	
+	@Autowired
+	private WordFrequencyService wordFrequencyService;
+	
 	@RequestMapping(value = "sentiments", method = RequestMethod.GET)
 	public Map<Sentiment, Double> getSentimentsForTweetsByKeyword(@RequestParam String keyword) {
+		// TODO make call to sentimentAnalysisService
 		Map<Sentiment, Double> sentiments = new HashMap<>();
 		sentiments.put(Sentiment.POSITIVE, Double.valueOf(0.21d));
 		sentiments.put(Sentiment.NEGATIVE, Double.valueOf(0.56d));
@@ -29,5 +34,14 @@ public class SocialMediaAnalysisController {
 		return sentiments;
 	}
 	
+	@RequestMapping(value = "wordfrequencies", method = RequestMethod.GET)
+	public Map<String, Integer> getWordFrequenciesForTweetsByKeyword(@RequestParam String keyword) {
+		// TODO make call to wordFrequencyService
+		Map<String, Integer> wordFrequencies = new HashMap<>();
+		wordFrequencies.put("word1", 3);
+		wordFrequencies.put("word2", 6);
+		wordFrequencies.put("word3", 10);
+		return wordFrequencies;
+	}
 	
 }
