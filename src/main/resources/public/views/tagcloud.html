@@ -4,6 +4,18 @@
 
 <div class="row">
 	<div class="col-lg-4">
-		<jqcloud words="words" width="400" height="250" steps="10"></jqcloud>
+		<div class="input-group">
+			<input type="text" class="form-control"
+				placeholder="Search Twitter for..." ng-model="searchKeyword"> 
+				<span class="input-group-btn">
+				<button class="btn btn-default" type="button" ng-click="calculateWordFrequencies()">Go!</button>
+			</span>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-4">
+		<jqcloud words="tagcloudModel" width="400" height="250" steps="10"></jqcloud>
 	</div>
 </div>
