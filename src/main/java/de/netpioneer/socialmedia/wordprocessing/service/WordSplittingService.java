@@ -3,6 +3,7 @@ package de.netpioneer.socialmedia.wordprocessing.service;
 import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ public class WordSplittingService {
 
 	public List<String> getWordsFromText(String text) {
 		List<String> words = new ArrayList<>();
-		BreakIterator breakIterator = BreakIterator.getWordInstance();
+		BreakIterator breakIterator = BreakIterator.getWordInstance(Locale.ENGLISH);
 		breakIterator.setText(text);
 		int start = breakIterator.first();
 		for (int end = breakIterator.next(); end != BreakIterator.DONE; start = end, end = breakIterator
