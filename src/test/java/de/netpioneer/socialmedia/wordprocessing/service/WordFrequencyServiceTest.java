@@ -9,7 +9,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import de.netpioneer.socialmedia.core.model.Sentence;
+import de.netpioneer.socialmedia.core.domain.Sentence;
 
 public class WordFrequencyServiceTest {
 	

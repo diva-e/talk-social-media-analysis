@@ -1,4 +1,4 @@
-package de.netpioneer.socialmedia.core.model;
+package de.netpioneer.socialmedia.core.domain;
 
 import java.util.List;
 

@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import de.netpioneer.socialmedia.core.model.Sentence;
+import de.netpioneer.socialmedia.core.domain.Sentence;
 
 @Service
 public class WordFrequencyService {
