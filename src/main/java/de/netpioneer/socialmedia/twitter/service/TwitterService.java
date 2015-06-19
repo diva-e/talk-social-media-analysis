@@ -15,7 +15,7 @@ public class TwitterService {
 	private Twitter twitter;
 
 	public List<Tweet> findTweetsByKeyword(String keyword) {
-		SearchResults searchResults = twitter.searchOperations().search(keyword);
+		SearchResults searchResults = twitter.searchOperations().search(keyword, 100);
 		List<Tweet> tweets = searchResults.getTweets();
 		return tweets;
 	}
