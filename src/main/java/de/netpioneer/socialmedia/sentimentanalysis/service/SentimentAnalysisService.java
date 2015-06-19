@@ -54,9 +54,7 @@ public class SentimentAnalysisService {
 			List<String> wordsFromText) {
 		List<String> positiveWordsFromText = sentimentAnalysisRepository.getMatchingPositiveWords(wordsFromText);
 		List<String> negativeWordsFromText = sentimentAnalysisRepository.getMatchingNegativeWords(wordsFromText);
-		// TODO calculate score
-		double score = 1.0d;
-		SentimentAnalysisResult result = new SentimentAnalysisResult(positiveWordsFromText, negativeWordsFromText, score); 
+		SentimentAnalysisResult result = new SentimentAnalysisResult(positiveWordsFromText, negativeWordsFromText); 
 		return result;
 	}
 
