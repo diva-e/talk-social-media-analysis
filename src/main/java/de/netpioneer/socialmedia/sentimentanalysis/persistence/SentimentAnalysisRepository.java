@@ -6,18 +6,20 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Repository;
 
 import de.netpioneer.socialmedia.core.util.FileUtilities;
 
 @Repository
 public class SentimentAnalysisRepository {
+
+	@Value("classpath:positive-words.txt")
+	private Resource positiveWordsResource;
 	
-	@Autowired
-	private ResourceLoader resourceLoader;
+	@Value("classpath:negative-words.txt")
+	private Resource negativeWordsResource;	
 
 	private List<String> positiveWords;
 	
@@ -25,10 +27,7 @@ public class SentimentAnalysisRepository {
 	
 	@PostConstruct
 	public void init() throws IOException {
-		// TODO can we directly load the word list as class members?
-		Resource positiveWordsResource = resourceLoader.getResource("classpath:positive-words.txt");
 		positiveWords = getWordsFromResource(positiveWordsResource);
-		Resource negativeWordsResource = resourceLoader.getResource("classpath:negative-words.txt");
 		negativeWords = getWordsFromResource(negativeWordsResource);
 	}
 	

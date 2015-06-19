@@ -5,9 +5,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Repository;
 
 import de.netpioneer.socialmedia.core.util.FileUtilities;
@@ -15,14 +14,13 @@ import de.netpioneer.socialmedia.core.util.FileUtilities;
 @Repository
 public class TwitterStopwordRepository {
 	
-	private List<String> stopwords;
+	@Value("classpath:twitter-stopwords.txt")
+	private Resource stopwordsResource;
 	
-	@Autowired
-	private ResourceLoader resourceLoader;
+	private List<String> stopwords;
 	
 	@PostConstruct
 	public void init() throws IOException {
-		Resource stopwordsResource = resourceLoader.getResource("classpath:twitter-stopwords.txt");
 		stopwords = FileUtilities.readLines(stopwordsResource.getFile());
 	}
 	
