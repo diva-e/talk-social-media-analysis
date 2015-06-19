@@ -9,12 +9,11 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.Files;
+import de.netpioneer.socialmedia.core.util.FileUtilities;
 
-@Component
+@Repository
 public class SentimentAnalysisRepository {
 	
 	@Autowired
@@ -56,7 +55,7 @@ public class SentimentAnalysisRepository {
 	}
 	
 	private List<String> getWordsFromResource(Resource resource) throws IOException {
-		return Files.readLines(resource.getFile(), Charsets.UTF_8, new WordLineProcessor());
+		return FileUtilities.readLines(resource.getFile());
 	}
 
 }

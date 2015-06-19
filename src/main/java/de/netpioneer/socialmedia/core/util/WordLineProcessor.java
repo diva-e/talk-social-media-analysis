@@ -1,4 +1,4 @@
-package de.netpioneer.socialmedia.sentimentanalysis.persistence;
+package de.netpioneer.socialmedia.core.util;
 
 import java.io.IOException;
 import java.util.ArrayList;

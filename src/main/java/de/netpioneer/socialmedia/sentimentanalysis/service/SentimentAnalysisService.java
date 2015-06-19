@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import de.netpioneer.socialmedia.sentimentanalysis.model.SentimentAnalysisResult;
+import de.netpioneer.socialmedia.sentimentanalysis.domain.SentimentAnalysisResult;
 import de.netpioneer.socialmedia.sentimentanalysis.persistence.SentimentAnalysisRepository;
 import de.netpioneer.socialmedia.wordprocessing.service.WordSplittingService;
 

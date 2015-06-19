@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.netpioneer.socialmedia.core.domain.Sentence;
-import de.netpioneer.socialmedia.sentimentanalysis.model.Sentiment;
+import de.netpioneer.socialmedia.sentimentanalysis.domain.Sentiment;
 import de.netpioneer.socialmedia.sentimentanalysis.service.SentimentAnalysisService;
 import de.netpioneer.socialmedia.twitter.service.TweetToSentenceConversionService;
 import de.netpioneer.socialmedia.twitter.service.TwitterService;

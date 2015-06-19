@@ -1,4 +1,4 @@
-package de.netpioneer.socialmedia.sentimentanalysis.model;
+package de.netpioneer.socialmedia.sentimentanalysis.domain;
 
 import java.util.List;
 
