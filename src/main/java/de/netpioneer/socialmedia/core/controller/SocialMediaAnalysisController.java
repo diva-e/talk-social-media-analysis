@@ -1,6 +1,5 @@
 package de.netpioneer.socialmedia.core.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,19 +35,16 @@ public class SocialMediaAnalysisController {
 	private TweetToSentenceConversionService tweetToSentenceConversionService;
 	
 	@RequestMapping(value = "sentiments", method = RequestMethod.GET)
-	public Map<Sentiment, Double> getSentimentsForTweetsByKeyword(@RequestParam String keyword) {
-		// TODO make call to sentimentAnalysisService
-		Map<Sentiment, Double> sentiments = new HashMap<>();
-		sentiments.put(Sentiment.POSITIVE, Double.valueOf(0.21d));
-		sentiments.put(Sentiment.NEGATIVE, Double.valueOf(0.56d));
-		sentiments.put(Sentiment.NEUTRAL, Double.valueOf(0.23d));
-		return sentiments;
+	public Map<Sentiment, Integer> getSentimentsForTweetsByKeyword(@RequestParam String keyword) {
+		List<Tweet> tweets = twitterService.findTweetsByKeyword(keyword);
+		List<Sentence> sentences = tweetToSentenceConversionService.convertTweetsToSentences(tweets);
+		return sentimentAnalysisService.getSentimentFrequenciesForSentences(sentences);
 	}
 	
 	@RequestMapping(value = "wordfrequencies", method = RequestMethod.GET)
 	public Map<String, Integer> getWordFrequenciesForTweetsByKeyword(@RequestParam String keyword) {
 		List<Tweet> tweets = twitterService.findTweetsByKeyword(keyword);
-		List<Sentence> sentences = tweetToSentenceConversionService.convertTweetsToSentences(tweets);		
+		List<Sentence> sentences = tweetToSentenceConversionService.convertTweetsToSentences(tweets);
 		return wordFrequencyService.calculateWordFrequencies(sentences);
 	}
 	
