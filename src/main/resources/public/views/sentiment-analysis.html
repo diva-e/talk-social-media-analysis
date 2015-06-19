@@ -6,7 +6,7 @@
 	<div class="col-lg-4">
 		<div class="input-group">
 			<input type="text" class="form-control"
-				placeholder="Search Twitter for..." ng-model="searchKeyword"> 
+				placeholder="Search Twitter for..." ng-model="searchKeyword" ng-keyup="$event.keyCode == 13 && performSentimentAnalysis()"> 
 				<span class="input-group-btn">
 				<button class="btn btn-default" type="button" ng-click="performSentimentAnalysis()">Go!</button>
 			</span>
@@ -16,10 +16,6 @@
 
 <div class="row">
 	<div class="col-lg-4">
-	
 		<canvas id="pie" class="chart chart-pie" data="sentimentAnalysisResultsValues" labels="sentimentAnalysisResultsLabels"></canvas>
-
-		<p>Search keyword: {{searchKeyword}}. The results will appear
-			here.</p>
 	</div>
 </div>

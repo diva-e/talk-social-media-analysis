@@ -13,11 +13,15 @@ public class WordLineProcessor implements LineProcessor<List<String>> {
 	@Override
 	public boolean processLine(String line) throws IOException {
 		String trimmedLine = line.trim();
-		if (trimmedLine.isEmpty() || trimmedLine.startsWith(";")) {
+		if (!isValidLine(trimmedLine)) {
 			return true;
 		}
 		lines.add(line);
 		return true;
+	}
+
+	private boolean isValidLine(String trimmedLine) {
+		return !trimmedLine.isEmpty() && !trimmedLine.startsWith(";");
 	}
 
 	@Override

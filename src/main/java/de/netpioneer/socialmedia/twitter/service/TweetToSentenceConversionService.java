@@ -23,8 +23,7 @@ public class TweetToSentenceConversionService {
 	public Sentence convertTweetToSentence(Tweet tweet) {
 		List<String> words = wordSplittingService.getWordsFromText(tweet.getText());
 		removeStopwords(words);
-		Sentence sentence = new Sentence(words);
-		return sentence;
+		return new Sentence(words);
 	}
 	
 	private void removeStopwords(List<String> words) {
