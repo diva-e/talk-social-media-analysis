@@ -47,15 +47,10 @@ public class SentimentAnalysisService {
 	}
 	
 	private SentimentAnalysisResult analyzeSentimentsForWords(List<String> words) {	
-		return calculateAnalysisResults(words);
-	}
-	
-	private SentimentAnalysisResult calculateAnalysisResults(
-			List<String> wordsFromText) {
-		List<String> positiveWordsFromText = sentimentAnalysisRepository.getMatchingPositiveWords(wordsFromText);
-		List<String> negativeWordsFromText = sentimentAnalysisRepository.getMatchingNegativeWords(wordsFromText);
+		List<String> positiveWordsFromText = sentimentAnalysisRepository.getMatchingPositiveWords(words);
+		List<String> negativeWordsFromText = sentimentAnalysisRepository.getMatchingNegativeWords(words);
 		SentimentAnalysisResult result = new SentimentAnalysisResult(positiveWordsFromText, negativeWordsFromText); 
 		return result;
 	}
-
+	
 }
