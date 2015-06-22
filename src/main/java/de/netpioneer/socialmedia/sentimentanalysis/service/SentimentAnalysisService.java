@@ -1,9 +1,9 @@
 package de.netpioneer.socialmedia.sentimentanalysis.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class SentimentAnalysisService {
 	
 	public Map<Sentiment, Integer> getSentimentFrequenciesForSentences(List<Sentence> sentences) {
 		List<SentimentAnalysisResult> sentimentAnalysisResults = analyzeSentimentsForSentences(sentences);
-		Map<Sentiment, Integer> sentimentFrequencies = new HashMap<>();
+		Map<Sentiment, Integer> sentimentFrequencies = new TreeMap<>();
 		for (SentimentAnalysisResult sentimentAnalysisResult : sentimentAnalysisResults) {
 			updateSentimentFrequency(sentimentFrequencies, sentimentAnalysisResult.getSentiment());
 		}
@@ -49,8 +49,7 @@ public class SentimentAnalysisService {
 	private SentimentAnalysisResult analyzeSentimentsForWords(List<String> words) {	
 		List<String> positiveWordsFromText = sentimentAnalysisRepository.getMatchingPositiveWords(words);
 		List<String> negativeWordsFromText = sentimentAnalysisRepository.getMatchingNegativeWords(words);
-		SentimentAnalysisResult result = new SentimentAnalysisResult(positiveWordsFromText, negativeWordsFromText); 
-		return result;
+		return new SentimentAnalysisResult(positiveWordsFromText, negativeWordsFromText);
 	}
 	
 }
