@@ -16,10 +16,10 @@ public class TwitterService {
 	@Autowired
 	private Twitter twitter;
 
-	public List<Tweet> findTweetsByKeyword(String keyword) {
+	public List<Tweet> findTweetsByKeyword(String keyword, String language) {
 		SearchParameters searchParameters = new SearchParameters(keyword)
 				.resultType(ResultType.RECENT)
-				.lang("en")
+				.lang(language)
 				.count(100);
 		SearchResults searchResults = twitter.searchOperations().search(searchParameters);
 		List<Tweet> tweets = searchResults.getTweets();

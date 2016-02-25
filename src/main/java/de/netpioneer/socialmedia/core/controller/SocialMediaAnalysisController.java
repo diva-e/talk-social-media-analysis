@@ -36,18 +36,18 @@ public class SocialMediaAnalysisController {
 	
 	@RequestMapping(value = "sentiments", method = RequestMethod.GET)
 	public Map<Sentiment, Integer> getSentimentsForTweetsByKeyword(@RequestParam String keyword) {
-		List<Sentence> sentences = findSentencesByKeyword(keyword);
+		List<Sentence> sentences = findSentencesByKeyword(keyword, "en");
 		return sentimentAnalysisService.getSentimentFrequenciesForSentences(sentences);
 	}
 	
 	@RequestMapping(value = "wordfrequencies", method = RequestMethod.GET)
 	public Map<String, Integer> getWordFrequenciesForTweetsByKeyword(@RequestParam String keyword) {
-		List<Sentence> sentences = findSentencesByKeyword(keyword);
+		List<Sentence> sentences = findSentencesByKeyword(keyword, "de");
 		return wordFrequencyService.calculateWordFrequencies(sentences);
 	}
 
-	private List<Sentence> findSentencesByKeyword(String keyword) {
-		List<Tweet> tweets = twitterService.findTweetsByKeyword(keyword);
+	private List<Sentence> findSentencesByKeyword(String keyword, String language) {
+		List<Tweet> tweets = twitterService.findTweetsByKeyword(keyword, language);
 		List<Sentence> sentences = tweetToSentenceConversionService.convertTweetsToSentences(tweets);
 		return sentences;
 	}
