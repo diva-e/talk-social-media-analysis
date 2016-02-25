@@ -11,8 +11,8 @@ Built using:
 * <a href="http://jtblin.github.io/angular-chart.js">Angular Chart</a>
 * <a href="http://mistic100.github.io/jQCloud">jQCloud</a></li>
 
-The talk was given at "Schnuppertag" on Jun 26th, 2015 at <a href="http://www.netpioneer.de">Netpioneer GmbH</a>, Karlsruhe/Germany
+The talk was given at "Entwicklerschnuppertag" on Feb 26th, 2016 at <a href="http://www.netpioneer.de">diva-e Netpioneer GmbH</a>, Karlsruhe/Germany
 
 Download slides here (German): <a href="http://www.markus-kiss.net/talks/was-tut-sich-im-netz/slides.pdf">slides.pdf</a>
 
-(c) 2015 <a href="http://www.markus-kiss.net">Markus Kiss</a>, Netpioneer GmbH
+(c) 2016 <a href="http://www.markus-kiss.net">Markus Kiss</a>, <a href="http://www.netpioneer.de">diva-e Netpioneer GmbH</a>
